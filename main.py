@@ -72,6 +72,8 @@ class Statusbar:
 
 colors = [[0, 255, 0], [0, 0, 255], [255, 0, 0], [255, 255, 0], [0, 255, 255], [255, 0, 255], [255, 255, 255]]
 c = 0
+x = 0
+y = 0
 
 statusbar = Statusbar(alpaca, 128, 8)
 
@@ -84,7 +86,19 @@ while True:
 		c = c+1
 		if c==len(colors):
 			c = 0
-
+			
+	if alpaca.dpad.right:
+		x = x+1
+		
+	if alpaca.dpad.left:
+		x = x-1
+		
+	if alpaca.dpad.up:
+		y = y-1
+		
+	if alpaca.dpad.down:
+		y = y+1
+		
 	alpaca.display.fill_rect(0, 8, 128, 128 - 8, 0x000)
 
 	statusbar.render(alpaca.display)
@@ -102,22 +116,22 @@ while True:
 	# alpaca.render_text("MAC Address", 10, 0xfff)
 	# alpaca.render_text(f"{alpaca.mac}", 11, 0xfff)
 
-	alpaca.display.fill_rect(20, 25, 10, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-	alpaca.display.fill_rect(45, 25, 10, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-	alpaca.display.fill_rect(15, 30, 20, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-	alpaca.display.fill_rect(40, 30, 20, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-	alpaca.display.fill_rect(10, 35, 55, 35, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-	alpaca.display.fill_rect(15, 70, 45, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-	alpaca.display.fill_rect(20, 75, 35, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-	alpaca.display.fill_rect(20, 45, 35, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
-	alpaca.display.fill_rect(15, 50, 45, 15, alpaca.display.rgb_to_rgb565(252, 252, 250))
-	alpaca.display.fill_rect(20, 65, 35, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
-	alpaca.display.fill_rect(25, 70, 25, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
-	alpaca.display.fill_rect(20, 55, 5, 5, 0x000)
-	alpaca.display.fill_rect(50, 55, 5, 5, 0x000)
-	alpaca.display.fill_rect(30, 60, 5, 10, 0x000)
-	alpaca.display.fill_rect(40, 60, 5, 10, 0x000)
-	alpaca.display.fill_rect(35, 65, 5, 5, 0x000)
+	alpaca.display.fill_rect(x+20, y+25, 10, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
+	alpaca.display.fill_rect(x+45, y+25, 10, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
+	alpaca.display.fill_rect(x+15, y+30, 20, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
+	alpaca.display.fill_rect(x+40, y+30, 20, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
+	alpaca.display.fill_rect(x+10, y+35, 55, 35, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
+	alpaca.display.fill_rect(x+15, y+70, 45, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
+	alpaca.display.fill_rect(x+20, y+75, 35, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
+	alpaca.display.fill_rect(x+20, y+45, 35, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
+	alpaca.display.fill_rect(x+15, y+50, 45, 15, alpaca.display.rgb_to_rgb565(252, 252, 250))
+	alpaca.display.fill_rect(x+20, y+65, 35, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
+	alpaca.display.fill_rect(x+25, y+70, 25, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
+	alpaca.display.fill_rect(x+20, y+55, 5, 5, 0x000)
+	alpaca.display.fill_rect(x+50, y+55, 5, 5, 0x000)
+	alpaca.display.fill_rect(x+30, y+60, 5, 10, 0x000)
+	alpaca.display.fill_rect(x+40, y+60, 5, 10, 0x000)
+	alpaca.display.fill_rect(x+35, y+65, 5, 5, 0x000)
 
 	alpaca.display.show()
 	print("updated")
