@@ -77,45 +77,48 @@ statusbar = Statusbar(alpaca, 128, 8)
 
 alpaca.display.fill(alpaca.display.rgb_to_rgb565(252, 252, 250))
 
+print("test")
+
 while True:
-    if alpaca.dpad.push:
-    	c = c+1
-    	if c==len(colors):
-    		c = 0
-    
-        alpaca.display.fill_rect(0, 8, 128, 128 - 8, 0x000)
+	if alpaca.dpad.push:
+		c = c+1
+		if c==len(colors):
+			c = 0
 
-        statusbar.render(alpaca.display)
+	alpaca.display.fill_rect(0, 8, 128, 128 - 8, 0x000)
 
-        statusbar.tick(alpaca)
-        # alpaca.render_text(f"alpaca", 2, alpaca.display.rgb_to_rgb565(252, 186, 3))
-        # alpaca.render_text(f"UP: {('YES' if alpaca.dpad.up else 'NO')}", 3, (0x0f0 if alpaca.dpad.up else 0x00f))
-        # alpaca.render_text(f"DOWN: {('YES' if alpaca.dpad.down else 'NO')}", 4, (0x0f0 if alpaca.dpad.down else 0x00f))
-        # alpaca.render_text(f"LEFT: {('YES' if alpaca.dpad.left else 'NO')}", 5, (0x0f0 if alpaca.dpad.left else 0x00f))
-        # alpaca.render_text(f"RIGHT: {('YES' if alpaca.dpad.right else 'NO')}", 6, (0x0f0 if alpaca.dpad.right else 0x00f))
-        # alpaca.render_text(f"SELECT: {('YES' if alpaca.dpad.push else 'NO')}", 7, (0x0f0 if alpaca.dpad.push else 0x00f))
-        # alpaca.render_text(f"A: {('YES' if alpaca.a.pressed else 'NO')}", 8, (0x0f0 if alpaca.a.pressed else 0x00f))
-        # alpaca.render_text(f"B: {('YES' if alpaca.b.pressed else 'NO')}", 9, (0x0f0 if alpaca.b.pressed else 0x00f))
+	statusbar.render(alpaca.display)
 
-        # alpaca.render_text("MAC Address", 10, 0xfff)
-        # alpaca.render_text(f"{alpaca.mac}", 11, 0xfff)
-        
-        alpaca.display.fill_rect(20, 25, 10, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-        alpaca.display.fill_rect(45, 25, 10, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-        alpaca.display.fill_rect(15, 30, 20, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
+	statusbar.tick(alpaca)
+	# alpaca.render_text(f"alpaca", 2, alpaca.display.rgb_to_rgb565(252, 186, 3))
+	# alpaca.render_text(f"UP: {('YES' if alpaca.dpad.up else 'NO')}", 3, (0x0f0 if alpaca.dpad.up else 0x00f))
+	# alpaca.render_text(f"DOWN: {('YES' if alpaca.dpad.down else 'NO')}", 4, (0x0f0 if alpaca.dpad.down else 0x00f))
+	# alpaca.render_text(f"LEFT: {('YES' if alpaca.dpad.left else 'NO')}", 5, (0x0f0 if alpaca.dpad.left else 0x00f))
+	# alpaca.render_text(f"RIGHT: {('YES' if alpaca.dpad.right else 'NO')}", 6, (0x0f0 if alpaca.dpad.right else 0x00f))
+	# alpaca.render_text(f"SELECT: {('YES' if alpaca.dpad.push else 'NO')}", 7, (0x0f0 if alpaca.dpad.push else 0x00f))
+	# alpaca.render_text(f"A: {('YES' if alpaca.a.pressed else 'NO')}", 8, (0x0f0 if alpaca.a.pressed else 0x00f))
+	# alpaca.render_text(f"B: {('YES' if alpaca.b.pressed else 'NO')}", 9, (0x0f0 if alpaca.b.pressed else 0x00f))
+
+	# alpaca.render_text("MAC Address", 10, 0xfff)
+	# alpaca.render_text(f"{alpaca.mac}", 11, 0xfff)
+
+	alpaca.display.fill_rect(20, 25, 10, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
+	alpaca.display.fill_rect(45, 25, 10, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
+	alpaca.display.fill_rect(15, 30, 20, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
 	alpaca.display.fill_rect(40, 30, 20, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-        alpaca.display.fill_rect(10, 35, 55, 35, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-        alpaca.display.fill_rect(15, 70, 45, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-        alpaca.display.fill_rect(20, 75, 35, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-        alpaca.display.fill_rect(20, 45, 35, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
-        alpaca.display.fill_rect(15, 50, 45, 15, alpaca.display.rgb_to_rgb565(252, 252, 250))
-        alpaca.display.fill_rect(20, 65, 35, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
-        alpaca.display.fill_rect(25, 70, 25, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
-        alpaca.display.fill_rect(20, 55, 5, 5, 0x000)
-        alpaca.display.fill_rect(50, 55, 5, 5, 0x000)
-        alpaca.display.fill_rect(30, 60, 5, 10, 0x000)
-        alpaca.display.fill_rect(40, 60, 5, 10, 0x000)
-        alpaca.display.fill_rect(35, 65, 5, 5, 0x000)
-        
-        alpaca.display.show()
-        time.sleep(0.05)
+	alpaca.display.fill_rect(10, 35, 55, 35, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
+	alpaca.display.fill_rect(15, 70, 45, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
+	alpaca.display.fill_rect(20, 75, 35, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
+	alpaca.display.fill_rect(20, 45, 35, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
+	alpaca.display.fill_rect(15, 50, 45, 15, alpaca.display.rgb_to_rgb565(252, 252, 250))
+	alpaca.display.fill_rect(20, 65, 35, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
+	alpaca.display.fill_rect(25, 70, 25, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
+	alpaca.display.fill_rect(20, 55, 5, 5, 0x000)
+	alpaca.display.fill_rect(50, 55, 5, 5, 0x000)
+	alpaca.display.fill_rect(30, 60, 5, 10, 0x000)
+	alpaca.display.fill_rect(40, 60, 5, 10, 0x000)
+	alpaca.display.fill_rect(35, 65, 5, 5, 0x000)
+
+	alpaca.display.show()
+	print("updated")
+	time.sleep(0.05)
