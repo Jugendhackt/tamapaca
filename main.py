@@ -76,7 +76,7 @@ c = 0
 zufall = 0
 bd = 0
 bh = 0
-bs = 0
+bs = 20
 
 x = 0
 y = 0
@@ -98,24 +98,18 @@ while True:
             c = 0
     else: 
         push= False
-    		
-	if alpaca.dpad.right:
-		x = x+1
-		
-	if alpaca.dpad.left:
-		x = x-1
-		
-	if alpaca.dpad.up:
-		y = y-1
-		
-	if alpaca.dpad.down:
-		y = y+1
-
-        if not (zufall == 10 or zufall == 50 or zufall == 90):
-                zufall = random.randint(0,1000) 
-        else:
-                if alpaca.a.pressed:
-                        zufall = 0
+                    
+        if alpaca.dpad.right:
+                x = x+1
+                
+        if alpaca.dpad.left:
+                x = x-1
+                
+        if alpaca.dpad.up:
+                y = y-1
+                
+        if alpaca.dpad.down:
+                y = y+1
         
         alpaca.display.fill_rect(0, 8, 128, 128 - 8, 0x000)
 
@@ -134,32 +128,52 @@ while True:
         # alpaca.render_text("MAC Address", 10, 0xfff)
         # alpaca.render_text(f"{alpaca.mac}", 11, 0xfff)
 
-	alpaca.display.fill_rect(x+20, y+25, 10, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-	alpaca.display.fill_rect(x+45, y+25, 10, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-	alpaca.display.fill_rect(x+15, y+30, 20, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-	alpaca.display.fill_rect(x+40, y+30, 20, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-	alpaca.display.fill_rect(x+10, y+35, 55, 35, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-	alpaca.display.fill_rect(x+15, y+70, 45, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-	alpaca.display.fill_rect(x+20, y+75, 35, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-	alpaca.display.fill_rect(x+20, y+45, 35, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
-	alpaca.display.fill_rect(x+15, y+50, 45, 15, alpaca.display.rgb_to_rgb565(252, 252, 250))
-	alpaca.display.fill_rect(x+20, y+65, 35, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
-	alpaca.display.fill_rect(x+25, y+70, 25, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
-	alpaca.display.fill_rect(x+20, y+55, 5, 5, 0x000)
-	alpaca.display.fill_rect(x+50, y+55, 5, 5, 0x000)
-	alpaca.display.fill_rect(x+30, y+60, 5, 10, 0x000)
-	alpaca.display.fill_rect(x+40, y+60, 5, 10, 0x000)
-	alpaca.display.fill_rect(x+35, y+65, 5, 5, 0x000)
+        alpaca.display.fill_rect(x+20, y+25, 10, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
+        alpaca.display.fill_rect(x+45, y+25, 10, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
+        alpaca.display.fill_rect(x+15, y+30, 20, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
+        alpaca.display.fill_rect(x+40, y+30, 20, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
+        alpaca.display.fill_rect(x+10, y+35, 55, 35, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
+        alpaca.display.fill_rect(x+15, y+70, 45, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
+        alpaca.display.fill_rect(x+20, y+75, 35, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
+        alpaca.display.fill_rect(x+20, y+45, 35, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
+        alpaca.display.fill_rect(x+15, y+50, 45, 15, alpaca.display.rgb_to_rgb565(252, 252, 250))
+        alpaca.display.fill_rect(x+20, y+65, 35, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
+        alpaca.display.fill_rect(x+25, y+70, 25, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
+        alpaca.display.fill_rect(x+20, y+55, 5, 5, 0x000)
+        alpaca.display.fill_rect(x+50, y+55, 5, 5, 0x000)
+        alpaca.display.fill_rect(x+30, y+60, 5, 10, 0x000)
+        alpaca.display.fill_rect(x+40, y+60, 5, 10, 0x000)
+        alpaca.display.fill_rect(x+35, y+65, 5, 5, 0x000)
 
-        if zufall == 10:
-                alpaca.render_text("Ich habe Hunger!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255))
-                
-        if zufall == 50:
-                alpaca.render_text("Ich habe Durst!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255))
-                
-        if zufall == 90:
-                alpaca.render_text("Ich moechte Spielen!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255)) 
+        alpaca.display.fill_rect(0, 20, 47, 8, 0x000)
+        alpaca.render_text("Hunger", 2, alpaca.display.rgb_to_rgb565(255, 255, 255))
+        alpaca.display.fill_rect(2, 30, bh+1, 5, alpaca.display.rgb_to_rgb565(255, 255, 255))
         
+        alpaca.display.fill_rect(0, 40, 40, 8, 0x000)
+        alpaca.render_text("Durst", 4, alpaca.display.rgb_to_rgb565(255, 255, 255))
+        alpaca.display.fill_rect(2, 50, bd+1, 5, alpaca.display.rgb_to_rgb565(255, 255, 255))
+        
+        alpaca.display.fill_rect(0, 60, 39, 8, 0x000)
+        alpaca.render_text("Spass", 6, alpaca.display.rgb_to_rgb565(255, 255, 255))
+        alpaca.display.fill_rect(2, 70, bs+1, 5, alpaca.display.rgb_to_rgb565(255, 255, 255))
+
+        zufall = random.randint(0,100)
+
+        if (zufall == 10 and bh < 20):
+                bh = bh+1
+        if bh == 20:
+                alpaca.render_text("Ich habe Hunger!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255))
+        elif bd == 20:
+                alpaca.render_text("Ich habe Durst!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255))
+        elif bs == 0:
+                alpaca.render_text("Ich will Spielen!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255))     
+                  
+        if (zufall == 50 and bd < 20):
+                bd = bd+1
+        
+        if (zufall == 90 and bs > 0):
+                bs = bs-1
+      
         alpaca.display.show()
         print("updated")
         time.sleep(0.05)
