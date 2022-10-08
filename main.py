@@ -74,6 +74,9 @@ class Statusbar:
 colors = [[0, 255, 0], [0, 0, 255], [255, 0, 0], [255, 255, 0], [0, 255, 255], [255, 0, 255], [255, 255, 255]]
 c = 0
 zufall = 0
+bd = 0
+bh = 0
+bs = 0
 
 statusbar = Statusbar(alpaca, 128, 8)
 
@@ -133,7 +136,7 @@ while True:
                 alpaca.render_text("Ich habe Durst!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255))
                 
         if zufall == 90:
-                alpaca.render_text("Ich moechte Spielen!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255))
+                alpaca.render_text("Ich moechte Spielen!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255)) 
         
         alpaca.display.show()
         print("updated")
