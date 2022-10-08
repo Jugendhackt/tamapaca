@@ -1,6 +1,7 @@
 from Alpaca import Alpaca
 import gc
 import time
+import random
 
 from Alpaca.SSD1351 import Display
 
@@ -72,6 +73,10 @@ class Statusbar:
 
 colors = [[0, 255, 0], [0, 0, 255], [255, 0, 0], [255, 255, 0], [0, 255, 255], [255, 0, 255], [255, 255, 255]]
 c = 0
+zufall = 0
+bd = 0
+bh = 0
+bs = 0
 
 x = 0
 y = 0
@@ -85,8 +90,7 @@ alpaca.display.fill(alpaca.display.rgb_to_rgb565(252, 252, 250))
 print("test")
 
 while True:
-
-    if alpaca.dpad.push:
+        if alpaca.dpad.push:
         if push == False:
             c = c+1
         push = True
@@ -107,23 +111,28 @@ while True:
 	if alpaca.dpad.down:
 		y = y+1
 
+        if not (zufall == 10 or zufall == 50 or zufall == 90):
+                zufall = random.randint(0,1000) 
+        else:
+                if alpaca.a.pressed:
+                        zufall = 0
+        
+        alpaca.display.fill_rect(0, 8, 128, 128 - 8, 0x000)
 
-	alpaca.display.fill_rect(0, 8, 128, 128 - 8, 0x000)
+        statusbar.render(alpaca.display)
 
-	statusbar.render(alpaca.display)
+        statusbar.tick(alpaca)
+        # alpaca.render_text(f"alpaca", 2, alpaca.display.rgb_to_rgb565(252, 186, 3))
+        # alpaca.render_text(f"UP: {('YES' if alpaca.dpad.up else 'NO')}", 3, (0x0f0 if alpaca.dpad.up else 0x00f))
+        # alpaca.render_text(f"DOWN: {('YES' if alpaca.dpad.down else 'NO')}", 4, (0x0f0 if alpaca.dpad.down else 0x00f))
+        # alpaca.render_text(f"LEFT: {('YES' if alpaca.dpad.left else 'NO')}", 5, (0x0f0 if alpaca.dpad.left else 0x00f))
+        # alpaca.render_text(f"RIGHT: {('YES' if alpaca.dpad.right else 'NO')}", 6, (0x0f0 if alpaca.dpad.right else 0x00f))
+        # alpaca.render_text(f"SELECT: {('YES' if alpaca.dpad.push else 'NO')}", 7, (0x0f0 if alpaca.dpad.push else 0x00f))
+        # alpaca.render_text(f"A: {('YES' if alpaca.a.pressed else 'NO')}", 8, (0x0f0 if alpaca.a.pressed else 0x00f))
+        # alpaca.render_text(f"B: {('YES' if alpaca.b.pressed else 'NO')}", 9, (0x0f0 if alpaca.b.pressed else 0x00f))
 
-	statusbar.tick(alpaca)
-	# alpaca.render_text(f"alpaca", 2, alpaca.display.rgb_to_rgb565(252, 186, 3))
-	# alpaca.render_text(f"UP: {('YES' if alpaca.dpad.up else 'NO')}", 3, (0x0f0 if alpaca.dpad.up else 0x00f))
-	# alpaca.render_text(f"DOWN: {('YES' if alpaca.dpad.down else 'NO')}", 4, (0x0f0 if alpaca.dpad.down else 0x00f))
-	# alpaca.render_text(f"LEFT: {('YES' if alpaca.dpad.left else 'NO')}", 5, (0x0f0 if alpaca.dpad.left else 0x00f))
-	# alpaca.render_text(f"RIGHT: {('YES' if alpaca.dpad.right else 'NO')}", 6, (0x0f0 if alpaca.dpad.right else 0x00f))
-	# alpaca.render_text(f"SELECT: {('YES' if alpaca.dpad.push else 'NO')}", 7, (0x0f0 if alpaca.dpad.push else 0x00f))
-	# alpaca.render_text(f"A: {('YES' if alpaca.a.pressed else 'NO')}", 8, (0x0f0 if alpaca.a.pressed else 0x00f))
-	# alpaca.render_text(f"B: {('YES' if alpaca.b.pressed else 'NO')}", 9, (0x0f0 if alpaca.b.pressed else 0x00f))
-
-	# alpaca.render_text("MAC Address", 10, 0xfff)
-	# alpaca.render_text(f"{alpaca.mac}", 11, 0xfff)
+        # alpaca.render_text("MAC Address", 10, 0xfff)
+        # alpaca.render_text(f"{alpaca.mac}", 11, 0xfff)
 
 	alpaca.display.fill_rect(x+20, y+25, 10, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
 	alpaca.display.fill_rect(x+45, y+25, 10, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
@@ -142,6 +151,16 @@ while True:
 	alpaca.display.fill_rect(x+40, y+60, 5, 10, 0x000)
 	alpaca.display.fill_rect(x+35, y+65, 5, 5, 0x000)
 
-	alpaca.display.show()
-	print("updated")
-	time.sleep(0.05)
+        if zufall == 10:
+                alpaca.render_text("Ich habe Hunger!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255))
+                
+        if zufall == 50:
+                alpaca.render_text("Ich habe Durst!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255))
+                
+        if zufall == 90:
+                alpaca.render_text("Ich moechte Spielen!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255)) 
+        
+        alpaca.display.show()
+        print("updated")
+        time.sleep(0.05)
+
