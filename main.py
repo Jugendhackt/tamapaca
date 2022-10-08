@@ -90,7 +90,7 @@ alpaca.display.fill(alpaca.display.rgb_to_rgb565(252, 252, 250))
 print("test")
 
 while True:
-        if alpaca.dpad.push:
+    if alpaca.dpad.push:
         if push == False:
             c = c+1
         push = True
