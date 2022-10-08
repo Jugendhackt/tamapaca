@@ -81,13 +81,30 @@ bs = 0
 x = 0
 y = 0
 
+def draw_alpaca(x,y,colors):
+	alpaca.display.fill_rect(x+20, y+25, 10, 5, colors)
+	alpaca.display.fill_rect(x+45, y+25, 10, 5, colors)
+	alpaca.display.fill_rect(x+15, y+30, 20, 5, colors)
+	alpaca.display.fill_rect(x+40, y+30, 20, 5, colors)
+	alpaca.display.fill_rect(x+10, y+35, 55, 35, colors)
+	alpaca.display.fill_rect(x+15, y+70, 45, 5, colors)
+	alpaca.display.fill_rect(x+20, y+75, 35, 5, colors)
+	alpaca.display.fill_rect(x+20, y+45, 35, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
+	alpaca.display.fill_rect(x+15, y+50, 45, 15, alpaca.display.rgb_to_rgb565(252, 252, 250))
+	alpaca.display.fill_rect(x+20, y+65, 35, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
+	alpaca.display.fill_rect(x+25, y+70, 25, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
+	alpaca.display.fill_rect(x+20, y+55, 5, 5, 0x000)
+	alpaca.display.fill_rect(x+50, y+55, 5, 5, 0x000)
+	alpaca.display.fill_rect(x+30, y+60, 5, 10, 0x000)
+	alpaca.display.fill_rect(x+40, y+60, 5, 10, 0x000)
+	alpaca.display.fill_rect(x+35, y+65, 5, 5, 0x000)
+
 push= False
 
 statusbar = Statusbar(alpaca, 128, 8)
 
 alpaca.display.fill(alpaca.display.rgb_to_rgb565(252, 252, 250))
 
-print("test")
 
 while True:
     if alpaca.dpad.push:
@@ -134,22 +151,7 @@ while True:
         # alpaca.render_text("MAC Address", 10, 0xfff)
         # alpaca.render_text(f"{alpaca.mac}", 11, 0xfff)
 
-	alpaca.display.fill_rect(x+20, y+25, 10, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-	alpaca.display.fill_rect(x+45, y+25, 10, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-	alpaca.display.fill_rect(x+15, y+30, 20, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-	alpaca.display.fill_rect(x+40, y+30, 20, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-	alpaca.display.fill_rect(x+10, y+35, 55, 35, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-	alpaca.display.fill_rect(x+15, y+70, 45, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-	alpaca.display.fill_rect(x+20, y+75, 35, 5, alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
-	alpaca.display.fill_rect(x+20, y+45, 35, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
-	alpaca.display.fill_rect(x+15, y+50, 45, 15, alpaca.display.rgb_to_rgb565(252, 252, 250))
-	alpaca.display.fill_rect(x+20, y+65, 35, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
-	alpaca.display.fill_rect(x+25, y+70, 25, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
-	alpaca.display.fill_rect(x+20, y+55, 5, 5, 0x000)
-	alpaca.display.fill_rect(x+50, y+55, 5, 5, 0x000)
-	alpaca.display.fill_rect(x+30, y+60, 5, 10, 0x000)
-	alpaca.display.fill_rect(x+40, y+60, 5, 10, 0x000)
-	alpaca.display.fill_rect(x+35, y+65, 5, 5, 0x000)
+        draw_alpaca(x,y,alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
 
         if zufall == 10:
                 alpaca.render_text("Ich habe Hunger!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255))
@@ -158,9 +160,8 @@ while True:
                 alpaca.render_text("Ich habe Durst!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255))
                 
         if zufall == 90:
-                alpaca.render_text("Ich moechte Spielen!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255)) 
+                alpaca.render_text("Ich will Spielen!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255)) 
         
         alpaca.display.show()
-        print("updated")
         time.sleep(0.05)
 
