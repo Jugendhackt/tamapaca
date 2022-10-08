@@ -6,7 +6,7 @@ import random
 from Alpaca.SSD1351 import Display
 
 gc.enable()
-alpaca = Alpaca.Alpaca('morgan')
+alpaca = Alpaca.Alpaca('tamagotchi')
 alpaca.display.init()
 
 class Statusbar:
@@ -81,23 +81,37 @@ bs = 0
 x = 0
 y = 0
 
-def draw_alpaca(x,y,colors):
-	alpaca.display.fill_rect(x+20, y+25, 10, 5, colors)
-	alpaca.display.fill_rect(x+45, y+25, 10, 5, colors)
-	alpaca.display.fill_rect(x+15, y+30, 20, 5, colors)
-	alpaca.display.fill_rect(x+40, y+30, 20, 5, colors)
-	alpaca.display.fill_rect(x+10, y+35, 55, 35, colors)
-	alpaca.display.fill_rect(x+15, y+70, 45, 5, colors)
-	alpaca.display.fill_rect(x+20, y+75, 35, 5, colors)
-	alpaca.display.fill_rect(x+20, y+45, 35, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
-	alpaca.display.fill_rect(x+15, y+50, 45, 15, alpaca.display.rgb_to_rgb565(252, 252, 250))
-	alpaca.display.fill_rect(x+20, y+65, 35, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
-	alpaca.display.fill_rect(x+25, y+70, 25, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
-	alpaca.display.fill_rect(x+20, y+55, 5, 5, 0x000)
-	alpaca.display.fill_rect(x+50, y+55, 5, 5, 0x000)
-	alpaca.display.fill_rect(x+30, y+60, 5, 10, 0x000)
-	alpaca.display.fill_rect(x+40, y+60, 5, 10, 0x000)
-	alpaca.display.fill_rect(x+35, y+65, 5, 5, 0x000)
+alpacax = 0
+alpacay = 0
+
+matex = 0
+matey = 0
+
+def draw_alpaca(alpacax,alpacay,colors):
+	alpaca.display.fill_rect(alpacax+20, alpacay+25, 10, 5, colors)
+	alpaca.display.fill_rect(alpacax+45, alpacay+25, 10, 5, colors)
+	alpaca.display.fill_rect(alpacax+15, alpacay+30, 20, 5, colors)
+	alpaca.display.fill_rect(alpacax+40, alpacay+30, 20, 5, colors)
+	alpaca.display.fill_rect(alpacax+10, alpacay+35, 55, 35, colors)
+	alpaca.display.fill_rect(alpacax+15, alpacay+70, 45, 5, colors)
+	alpaca.display.fill_rect(alpacax+20, alpacay+75, 35, 5, colors)
+	alpaca.display.fill_rect(alpacax+20, alpacay+45, 35, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
+	alpaca.display.fill_rect(alpacax+15, alpacay+50, 45, 15, alpaca.display.rgb_to_rgb565(252, 252, 250))
+	alpaca.display.fill_rect(alpacax+20, alpacay+65, 35, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
+	alpaca.display.fill_rect(alpacax+25, alpacay+70, 25, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
+	alpaca.display.fill_rect(alpacax+20, alpacay+55, 5, 5, 0x000)
+	alpaca.display.fill_rect(alpacax+50, alpacay+55, 5, 5, 0x000)
+	alpaca.display.fill_rect(alpacax+30, alpacay+60, 5, 10, 0x000)
+	alpaca.display.fill_rect(alpacax+40, alpacay+60, 5, 10, 0x000)
+	alpaca.display.fill_rect(alpacax+35, alpacay+65, 5, 5, 0x000)
+
+
+def draw_mate(matex,matey):
+    alpaca.display.fill_rect(matex+20, matey+15, 30, 40, alpaca.display.rgb_to_rgb565(186, 130, 29))
+    alpaca.display.fill_rect(matex+27, matey+5, 16, 10, alpaca.display.rgb_to_rgb565(209, 146, 33))
+    alpaca.display.fill_rect(matex+27, matey+0, 16, 5, alpaca.display.rgb_to_rgb565(62, 25, 255))
+    alpaca.display.fill_rect(matex+20, matey+25, 30, 30, alpaca.display.rgb_to_rgb565(255, 208, 19))
+    
 
 push= False
 
@@ -128,40 +142,42 @@ while True:
 	if alpaca.dpad.down:
 		y = y+1
 
-        if not (zufall == 10 or zufall == 50 or zufall == 90):
-                zufall = random.randint(0,1000) 
-        else:
-                if alpaca.a.pressed:
-                        zufall = 0
-        
-        alpaca.display.fill_rect(0, 8, 128, 128 - 8, 0x000)
+    if not (zufall == 10 or zufall == 50 or zufall == 90):
+            zufall = random.randint(0,1000) 
+    else:
+            if alpaca.a.pressed:
+                    zufall = 0
+    
+    alpaca.display.fill_rect(0, 8, 128, 128 - 8, 0x000)
 
-        statusbar.render(alpaca.display)
+    statusbar.render(alpaca.display)
 
-        statusbar.tick(alpaca)
-        # alpaca.render_text(f"alpaca", 2, alpaca.display.rgb_to_rgb565(252, 186, 3))
-        # alpaca.render_text(f"UP: {('YES' if alpaca.dpad.up else 'NO')}", 3, (0x0f0 if alpaca.dpad.up else 0x00f))
-        # alpaca.render_text(f"DOWN: {('YES' if alpaca.dpad.down else 'NO')}", 4, (0x0f0 if alpaca.dpad.down else 0x00f))
-        # alpaca.render_text(f"LEFT: {('YES' if alpaca.dpad.left else 'NO')}", 5, (0x0f0 if alpaca.dpad.left else 0x00f))
-        # alpaca.render_text(f"RIGHT: {('YES' if alpaca.dpad.right else 'NO')}", 6, (0x0f0 if alpaca.dpad.right else 0x00f))
-        # alpaca.render_text(f"SELECT: {('YES' if alpaca.dpad.push else 'NO')}", 7, (0x0f0 if alpaca.dpad.push else 0x00f))
-        # alpaca.render_text(f"A: {('YES' if alpaca.a.pressed else 'NO')}", 8, (0x0f0 if alpaca.a.pressed else 0x00f))
-        # alpaca.render_text(f"B: {('YES' if alpaca.b.pressed else 'NO')}", 9, (0x0f0 if alpaca.b.pressed else 0x00f))
+    statusbar.tick(alpaca)
+    # alpaca.render_text(f"alpaca", 2, alpaca.display.rgb_to_rgb565(252, 186, 3))
+    # alpaca.render_text(f"UP: {('YES' if alpaca.dpad.up else 'NO')}", 3, (0x0f0 if alpaca.dpad.up else 0x00f))
+    # alpaca.render_text(f"DOWN: {('YES' if alpaca.dpad.down else 'NO')}", 4, (0x0f0 if alpaca.dpad.down else 0x00f))
+    # alpaca.render_text(f"LEFT: {('YES' if alpaca.dpad.left else 'NO')}", 5, (0x0f0 if alpaca.dpad.left else 0x00f))
+    # alpaca.render_text(f"RIGHT: {('YES' if alpaca.dpad.right else 'NO')}", 6, (0x0f0 if alpaca.dpad.right else 0x00f))
+    # alpaca.render_text(f"SELECT: {('YES' if alpaca.dpad.push else 'NO')}", 7, (0x0f0 if alpaca.dpad.push else 0x00f))
+    # alpaca.render_text(f"A: {('YES' if alpaca.a.pressed else 'NO')}", 8, (0x0f0 if alpaca.a.pressed else 0x00f))
+    # alpaca.render_text(f"B: {('YES' if alpaca.b.pressed else 'NO')}", 9, (0x0f0 if alpaca.b.pressed else 0x00f))
 
-        # alpaca.render_text("MAC Address", 10, 0xfff)
-        # alpaca.render_text(f"{alpaca.mac}", 11, 0xfff)
+    # alpaca.render_text("MAC Address", 10, 0xfff)
+    # alpaca.render_text(f"{alpaca.mac}", 11, 0xfff)
 
-        draw_alpaca(x,y,alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
+    draw_alpaca(alpacax,alpacay,alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
+    zufall = random.randint(0,1000)         
+    draw_mate(matex, matey)
 
-        if zufall == 10:
-                alpaca.render_text("Ich habe Hunger!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255))
-                
-        if zufall == 50:
-                alpaca.render_text("Ich habe Durst!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255))
-                
-        if zufall == 90:
-                alpaca.render_text("Ich will Spielen!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255)) 
-        
-        alpaca.display.show()
-        time.sleep(0.05)
+    if zufall == 10:
+            alpaca.render_text("Ich habe Hunger!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255))
+            
+    if zufall == 50:
+            alpaca.render_text("Ich habe Durst!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255))
+            
+    if zufall == 90:
+            alpaca.render_text("Ich will Spielen!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255)) 
+    
+    alpaca.display.show()
+    time.sleep(0.05)
 
