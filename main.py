@@ -72,8 +72,11 @@ class Statusbar:
 
 colors = [[0, 255, 0], [0, 0, 255], [255, 0, 0], [255, 255, 0], [0, 255, 255], [255, 0, 255], [255, 255, 255]]
 c = 0
+
 x = 0
 y = 0
+
+push= False
 
 statusbar = Statusbar(alpaca, 128, 8)
 
@@ -82,11 +85,16 @@ alpaca.display.fill(alpaca.display.rgb_to_rgb565(252, 252, 250))
 print("test")
 
 while True:
-	if alpaca.dpad.push:
-		c = c+1
-		if c==len(colors):
-			c = 0
-			
+
+    if alpaca.dpad.push:
+        if push == False:
+            c = c+1
+        push = True
+        if c == len(colors):
+            c = 0
+    else: 
+        push= False
+    		
 	if alpaca.dpad.right:
 		x = x+1
 		
@@ -98,7 +106,8 @@ while True:
 		
 	if alpaca.dpad.down:
 		y = y+1
-		
+
+
 	alpaca.display.fill_rect(0, 8, 128, 128 - 8, 0x000)
 
 	statusbar.render(alpaca.display)
