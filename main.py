@@ -190,6 +190,41 @@ def draw_mate(x, y):
     #label-inner
     alpaca.display.fill_rect(x + 7, y + 17, 2, 10, alpaca.display.rgb_to_rgb565(255, 255, 255))
 
+def draw_controller(x=0, y=0, m=2):
+    #block weiß
+    alpaca.display.fill_rect(m * 1 + x, m * 2 + y, m * 22, m * 9, alpaca.display.rgb_to_rgb565(255, 255, 255))
+    alpaca.display.fill_rect(m * 3 + x, m * 1 + y, m * 4, m * 1, alpaca.display.rgb_to_rgb565(255, 255, 255))
+    alpaca.display.fill_rect(m * 17 + x, m * 1 + y, m * 4, m * 1, alpaca.display.rgb_to_rgb565(255, 255, 255))
+    alpaca.display.fill_rect(m * 1 + x, m * 11 + y, m * 5, m * 2, alpaca.display.rgb_to_rgb565(255, 255, 255))
+    alpaca.display.fill_rect(m * 2 + x, m * 13 + y, m * 3, m * 1, alpaca.display.rgb_to_rgb565(255, 255, 255))
+    alpaca.display.fill_rect(m * 18 + x, m * 11 + y, m * 5, m * 2, alpaca.display.rgb_to_rgb565(255, 255, 255))
+    alpaca.display.fill_rect(m * 19 + x, m * 13 + y, m * 3, m * 1, alpaca.display.rgb_to_rgb565(255, 255, 255))
+    alpaca.display.fill_rect(m * 6 + x, m * 11 + y, m * 1, m * 1, alpaca.display.rgb_to_rgb565(255, 255, 255))#4hu.+
+    alpaca.display.fill_rect(m * 17 + x, m * 11 + y, m * 1, m * 1, alpaca.display.rgb_to_rgb565(255, 255, 255))#7hu.+
+    #outline
+    alpaca.display.fill_rect(m * 0 + x, m * 3 + y, m * 1, m * 10, alpaca.display.rgb_to_rgb565(255, 0, 0))#1h
+    alpaca.display.fill_rect(m * 1 + x, m * 2 + y, m * 1, m * 1, alpaca.display.rgb_to_rgb565(255, 0, 0))#2h0
+    alpaca.display.fill_rect(m * 2 + x, m * 1 + y, m * 1, m * 1, alpaca.display.rgb_to_rgb565(255, 0, 0))#3h0
+    alpaca.display.fill_rect(m * 3 + x, m * 0 + y, m * 4, m * 1, alpaca.display.rgb_to_rgb565(255, 0, 0))#1so
+    alpaca.display.fill_rect(m * 7 + x, m * 1 + y, m * 1, m * 1, alpaca.display.rgb_to_rgb565(255, 0, 0))#4h0.
+    alpaca.display.fill_rect(m * 8 + x, m * 2 + y, m * 8, m * 1, alpaca.display.rgb_to_rgb565(255, 0, 0))#2s0.
+    alpaca.display.fill_rect(m * 16 + x, m * 1 + y, m * 1, m * 1, alpaca.display.rgb_to_rgb565(255, 0, 0))#5h0
+    alpaca.display.fill_rect(m * 17 + x, m * 0 + y, m * 4, m * 1, alpaca.display.rgb_to_rgb565(255, 0, 0))#3s0
+    alpaca.display.fill_rect(m * 21 + x, m * 1 + y, m * 1, m * 1, alpaca.display.rgb_to_rgb565(255, 0, 0))#6h0.
+    alpaca.display.fill_rect(m * 22 + x, m * 2 + y, m * 1, m * 1, alpaca.display.rgb_to_rgb565(255, 0, 0))#7h0.
+    alpaca.display.fill_rect(m * 23 + x, m * 3 + y, m * 1, m * 10, alpaca.display.rgb_to_rgb565(255, 0, 0))#8h0.
+    #keys
+    alpaca.display.fill_rect(m * 1 + x, m * 13 + y, m * 1, m * 1, alpaca.display.rgb_to_rgb565(255, 0, 0))#2hu.
+    alpaca.display.fill_rect(m * 2 + x, m * 14 + y, m * 3, m * 1, alpaca.display.rgb_to_rgb565(255, 0, 0))#1su.
+    alpaca.display.fill_rect(m * 5 + x, m * 13 + y, m * 1, m * 1, alpaca.display.rgb_to_rgb565(255, 0, 0))#3hu.
+    alpaca.display.fill_rect(m * 6 + x, m * 12 + y, m * 1, m * 1, alpaca.display.rgb_to_rgb565(255, 0, 0))#4hu.
+    alpaca.display.fill_rect(m * 7 + x, m * 11 + y, m * 1, m * 1, alpaca.display.rgb_to_rgb565(255, 0, 0))#5hu.
+    alpaca.display.fill_rect(m * 8 + x, m * 10 + y, m * 8, m * 1, alpaca.display.rgb_to_rgb565(255, 0, 0))#2su.
+    alpaca.display.fill_rect(m * 16 + x, m * 11 + y, m * 1, m * 1, alpaca.display.rgb_to_rgb565(255, 0, 0))#6hu.
+    alpaca.display.fill_rect(m * 17 + x, m * 12 + y, m * 1, m * 1, alpaca.display.rgb_to_rgb565(255, 0, 0))#7hu.
+    alpaca.display.fill_rect(m * 18 + x, m * 13 + y, m * 1, m * 1, alpaca.display.rgb_to_rgb565(255, 0, 0))#8hu.
+    alpaca.display.fill_rect(m * 19 + x, m * 14 + y, m * 3, m * 1, alpaca.display.rgb_to_rgb565(255, 0, 0))#3su.
+    alpaca.display.fill_rect(m * 22 + x, m * 13 + y, m * 1, m * 1, alpaca.display.rgb_to_rgb565(255, 0, 0))#9hu.
 
 def draw_computer(x=0, y=0, m=1):
     # display
