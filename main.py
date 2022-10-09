@@ -6,7 +6,7 @@ import random
 from Alpaca.SSD1351 import Display
 
 gc.enable()
-alpaca = Alpaca.Alpaca('morgan')
+alpaca = Alpaca.Alpaca('tamagotchi')
 alpaca.display.init()
 
 class Statusbar:
@@ -81,13 +81,44 @@ bs = 20
 x = 0
 y = 0
 
+alpacax = 0
+alpacay = 0
+
+matex = 0
+matey = 0
+
+def draw_alpaca(alpacax,alpacay,colors):
+	alpaca.display.fill_rect(alpacax+20, alpacay+25, 10, 5, colors)
+	alpaca.display.fill_rect(alpacax+45, alpacay+25, 10, 5, colors)
+	alpaca.display.fill_rect(alpacax+15, alpacay+30, 20, 5, colors)
+	alpaca.display.fill_rect(alpacax+40, alpacay+30, 20, 5, colors)
+	alpaca.display.fill_rect(alpacax+10, alpacay+35, 55, 35, colors)
+	alpaca.display.fill_rect(alpacax+15, alpacay+70, 45, 5, colors)
+	alpaca.display.fill_rect(alpacax+20, alpacay+75, 35, 5, colors)
+	alpaca.display.fill_rect(alpacax+20, alpacay+45, 35, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
+	alpaca.display.fill_rect(alpacax+15, alpacay+50, 45, 15, alpaca.display.rgb_to_rgb565(252, 252, 250))
+	alpaca.display.fill_rect(alpacax+20, alpacay+65, 35, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
+	alpaca.display.fill_rect(alpacax+25, alpacay+70, 25, 5, alpaca.display.rgb_to_rgb565(252, 252, 250))
+	alpaca.display.fill_rect(alpacax+20, alpacay+55, 5, 5, 0x000)
+	alpaca.display.fill_rect(alpacax+50, alpacay+55, 5, 5, 0x000)
+	alpaca.display.fill_rect(alpacax+30, alpacay+60, 5, 10, 0x000)
+	alpaca.display.fill_rect(alpacax+40, alpacay+60, 5, 10, 0x000)
+	alpaca.display.fill_rect(alpacax+35, alpacay+65, 5, 5, 0x000)
+
+
+def draw_mate(matex,matey):
+    alpaca.display.fill_rect(matex+20, matey+15, 30, 40, alpaca.display.rgb_to_rgb565(186, 130, 29))
+    alpaca.display.fill_rect(matex+27, matey+5, 16, 10, alpaca.display.rgb_to_rgb565(209, 146, 33))
+    alpaca.display.fill_rect(matex+27, matey+0, 16, 5, alpaca.display.rgb_to_rgb565(62, 25, 255))
+    alpaca.display.fill_rect(matex+20, matey+25, 30, 30, alpaca.display.rgb_to_rgb565(255, 208, 19))
+    
+
 push= False
 
 statusbar = Statusbar(alpaca, 128, 8)
 
 alpaca.display.fill(alpaca.display.rgb_to_rgb565(252, 252, 250))
 
-print("test")
 
 while True:
     if alpaca.dpad.push:
@@ -98,6 +129,7 @@ while True:
             c = 0
     else: 
         push= False
+
                     
         if alpaca.dpad.right:
                 x = x+1
