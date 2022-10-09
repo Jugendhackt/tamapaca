@@ -104,7 +104,7 @@ def draw_alpaca(alpacax,alpacay,colors):
 	alpaca.display.fill_rect(alpacax+30, alpacay+60, 5, 10, 0x000)
 	alpaca.display.fill_rect(alpacax+40, alpacay+60, 5, 10, 0x000)
 	alpaca.display.fill_rect(alpacax+35, alpacay+65, 5, 5, 0x000)
-	
+
 def draw_pizza(m=1, x=0, y=0):
 	#crust
 	alpaca.display.fill_rect(m * 2 + x, m * 2 + y, m * 25, m * 7, alpaca.display.rgb_to_rgb565(255, 150, 0))
@@ -149,6 +149,36 @@ def draw_mate(matex,matey):
     alpaca.display.fill_rect(matex+27, matey+0, 16, 5, alpaca.display.rgb_to_rgb565(62, 25, 255))
     alpaca.display.fill_rect(matex+20, matey+25, 30, 30, alpaca.display.rgb_to_rgb565(255, 208, 19))
     
+def draw_computer(x = 0, y = 0, m = 1):
+    #display
+    alpaca.display.fill_rect(10 * m + x, 15 * m + y, 25 * m, 20 * m, alpaca.display.rgb_to_rgb565(0, 165, 224)) #blau
+    #keyboard
+    alpaca.display.fill_rect(7 * m + x, 33 * m + y, 30 * m, 4 * m, alpaca.display.rgb_to_rgb565(255, 255, 0)) #gelb u
+    alpaca.display.fill_rect(9 * m + x, 29 * m + y, 27 * m, 4 * m, alpaca.display.rgb_to_rgb565(255, 255, 0)) #gelb o
+    #outline
+    alpaca.display.fill_rect(9 * m + x, 15 * m + y, 1 * m, 14 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s3h
+    alpaca.display.fill_rect(10 * m + x, 14 * m + y, 25 * m, 1 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))  #s3s
+    alpaca.display.fill_rect(35 * m + x, 15 * m + y, 1 * m, 14 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s4h
+    alpaca.display.fill_rect(10 * m + x, 28 * m + y, 25 * m, 1 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s2s
+    alpaca.display.fill_rect(8 * m + x, 29 * m + y, 1 * m, 4 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s2h
+    alpaca.display.fill_rect(7 * m + x, 33 * m + y, 1 * m, 4 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s1h
+    alpaca.display.fill_rect(7 * m + x, 37 * m + y, 31 * m, 1 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s1s
+    alpaca.display.fill_rect(37 * m + x, 33 * m + y, 1 * m, 4 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s6h
+    alpaca.display.fill_rect(36 * m + x, 29 * m + y, 1 * m, 4 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s5h
+    #keys-upper
+    alpaca.display.fill_rect(11 * m + x, 30 * m + y, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #t1o
+    alpaca.display.fill_rect(15 * m + x, 30 * m + y, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
+    alpaca.display.fill_rect(19 * m + x, 30 * m + y, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
+    alpaca.display.fill_rect(23 * m + x, 30 * m + y, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
+    alpaca.display.fill_rect(27 * m + x, 30 * m + y, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
+    alpaca.display.fill_rect(31 * m + x, 30 * m + y, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
+    #keys-lower
+    alpaca.display.fill_rect(9 * m + x, 34 * m + y, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
+    alpaca.display.fill_rect(13 * m + x, 34 * m + y, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
+    alpaca.display.fill_rect(29 * m + x, 34 * m + y, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
+    alpaca.display.fill_rect(17 * m + x, 34 * m + y, 10 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
+    alpaca.display.fill_rect(33 * m + x, 34 * m + y, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
+
 
 push= False
 
@@ -167,21 +197,6 @@ while True:
     else: 
         push= False
 
-                    
-        if alpaca.dpad.right:
-                x = x+1
-                
-        if alpaca.dpad.left:
-                x = x-1
-                
-        if alpaca.dpad.up:
-                y = y-1
-                
-        if alpaca.dpad.down:
-                y = y+1
-                
-        if alpaca.a.pressed:
-    		draw_pizza()
         
         alpaca.display.fill_rect(0, 8, 128, 128 - 8, 0x000)
 
@@ -231,21 +246,40 @@ while True:
 
         zufall = random.randint(0,100)
 
-        if (zufall == 10 and bh < 20):
-                bh = bh+1
-        if bh == 20:
-                alpaca.render_text("Ich habe Hunger!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255))
-        elif bd == 20:
-                alpaca.render_text("Ich habe Durst!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255))
-        elif bs == 0:
-                alpaca.render_text("Ich will Spielen!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255))     
-                  
-        if (zufall == 50 and bd < 20):
-                bd = bd+1
-        
-        if (zufall == 90 and bs > 0):
-                bs = bs-1
-      
+		if (zufall == 10 and bh < 20):
+			bh = bh+1
+		if bh == 20:
+			alpaca.render_text("Ich habe Hunger!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255))
+		elif bd == 20:
+			alpaca.render_text("Ich habe Durst!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255))
+		elif bs == 0:
+			alpaca.render_text("Ich will Spielen!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255))
+
+		if (zufall == 50 and bd < 20):
+			bd = bd+1
+
+		if (zufall == 90 and bs > 0):
+			bs = bs-1
+
+
+		if alpaca.dpad.right:
+			x = x+1
+
+		if alpaca.dpad.left:
+			x = x-1
+
+		if alpaca.dpad.up:
+			y = y-1
+
+		if alpaca.dpad.down:
+			y = y+1
+
+		if alpaca.a.pressed:
+			draw_pizza(50, 90)
+
+		if alpaca.b.pressed:
+			draw_computer(90, 90)
+
         alpaca.display.show()
         print("updated")
         time.sleep(0.05)
