@@ -153,38 +153,37 @@ while True:
 
         draw_alpaca(x,y,alpaca.display.rgb_to_rgb565(colors[c][0],colors[c][1], colors[c][2]))
 
-        m = 3
-        #display
-        alpaca.display.fill_rect(10 * m, 15 * m, 25 * m, 20 * m, alpaca.display.rgb_to_rgb565(0, 165, 224)) #blau
-        #keyboard
-        alpaca.display.fill_rect(7 * m, 33 * m, 30 * m, 4 * m, alpaca.display.rgb_to_rgb565(255, 255, 0)) #gelb u
-        alpaca.display.fill_rect(9 * m, 29 * m, 27 * m, 4 * m, alpaca.display.rgb_to_rgb565(255, 255, 0)) #gelb o
-        #outline
-        alpaca.display.fill_rect(9 * m, 15 * m, 1 * m, 14 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s3h
-        alpaca.display.fill_rect(10 * m, 14 * m, 25 * m, 1 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))  #s3s
-        alpaca.display.fill_rect(35 * m, 15 * m, 1 * m, 14 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s4h
-        alpaca.display.fill_rect(10 * m, 28 * m, 25 * m, 1 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s2s
-        alpaca.display.fill_rect(8 * m, 29 * m, 1 * m, 4 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s2h
-        alpaca.display.fill_rect(7 * m, 33 * m, 1 * m, 4 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s1h
-        alpaca.display.fill_rect(7 * m, 37 * m, 31 * m, 1 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s1s
-        alpaca.display.fill_rect(37 * m, 33 * m, 1 * m, 4 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s6h
-        alpaca.display.fill_rect(36 * m, 29 * m, 1 * m, 4 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s5h
-        #keys
-        alpaca.display.fill_rect(11 * m, 30 * m, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #t1o
-        alpaca.display.fill_rect(15 * m, 30 * m, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
-        alpaca.display.fill_rect(19 * m, 30 * m, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
-        alpaca.display.fill_rect(23 * m, 30 * m, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
-        alpaca.display.fill_rect(27 * m, 30 * m, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
-        alpaca.display.fill_rect(31 * m, 30 * m, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
+        def draw_computer(x = 0, y = 0, m = 1):
+            #display
+            alpaca.display.fill_rect(10 * m + x, 15 * m + y, 25 * m, 20 * m, alpaca.display.rgb_to_rgb565(0, 165, 224)) #blau
+            #keyboard
+            alpaca.display.fill_rect(7 * m + x, 33 * m + y, 30 * m, 4 * m, alpaca.display.rgb_to_rgb565(255, 255, 0)) #gelb u
+            alpaca.display.fill_rect(9 * m + x, 29 * m + y, 27 * m, 4 * m, alpaca.display.rgb_to_rgb565(255, 255, 0)) #gelb o
+            #outline
+            alpaca.display.fill_rect(9 * m + x, 15 * m + y, 1 * m, 14 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s3h
+            alpaca.display.fill_rect(10 * m + x, 14 * m + y, 25 * m, 1 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))  #s3s
+            alpaca.display.fill_rect(35 * m + x, 15 * m + y, 1 * m, 14 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s4h
+            alpaca.display.fill_rect(10 * m + x, 28 * m + y, 25 * m, 1 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s2s
+            alpaca.display.fill_rect(8 * m + x, 29 * m + y, 1 * m, 4 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s2h
+            alpaca.display.fill_rect(7 * m + x, 33 * m + y, 1 * m, 4 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s1h
+            alpaca.display.fill_rect(7 * m + x, 37 * m + y, 31 * m, 1 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s1s
+            alpaca.display.fill_rect(37 * m + x, 33 * m + y, 1 * m, 4 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s6h
+            alpaca.display.fill_rect(36 * m + x, 29 * m + y, 1 * m, 4 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #s5h
+            #keys-upper
+            alpaca.display.fill_rect(11 * m + x, 30 * m + y, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0)) #t1o
+            alpaca.display.fill_rect(15 * m + x, 30 * m + y, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
+            alpaca.display.fill_rect(19 * m + x, 30 * m + y, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
+            alpaca.display.fill_rect(23 * m + x, 30 * m + y, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
+            alpaca.display.fill_rect(27 * m + x, 30 * m + y, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
+            alpaca.display.fill_rect(31 * m + x, 30 * m + y, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
+            #keys-lower
+            alpaca.display.fill_rect(9 * m + x, 34 * m + y, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
+            alpaca.display.fill_rect(13 * m + x, 34 * m + y, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
+            alpaca.display.fill_rect(29 * m + x, 34 * m + y, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
+            alpaca.display.fill_rect(17 * m + x, 34 * m + y, 10 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
+            alpaca.display.fill_rect(33 * m + x, 34 * m + y, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
 
-        alpaca.display.fill_rect(9 * m, 34 * m, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
-        alpaca.display.fill_rect(13 * m, 34 * m, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
-        alpaca.display.fill_rect(17 * m, 34 * m, 10 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
-        #alpaca.display.fill_rect(21 * m, 34 * m, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(50, 50, 50))
-        #alpaca.display.fill_rect(25 * m, 34 * m, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(50, 50, 50))
-        alpaca.display.fill_rect(29 * m, 34 * m, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
-        alpaca.display.fill_rect(33 * m, 34 * m, 2 * m, 2 * m, alpaca.display.rgb_to_rgb565(140, 0, 0))
-
+        draw_computer(10, 20, 1)
 
         if zufall == 10:
                 alpaca.render_text("Ich habe Hunger!", 12, alpaca.display.rgb_to_rgb565(255, 255, 255))
