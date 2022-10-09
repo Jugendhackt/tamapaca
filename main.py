@@ -104,6 +104,43 @@ def draw_alpaca(alpacax,alpacay,colors):
 	alpaca.display.fill_rect(alpacax+30, alpacay+60, 5, 10, 0x000)
 	alpaca.display.fill_rect(alpacax+40, alpacay+60, 5, 10, 0x000)
 	alpaca.display.fill_rect(alpacax+35, alpacay+65, 5, 5, 0x000)
+	
+def draw_pizza(m=1, x=0, y=0):
+	#crust
+	alpaca.display.fill_rect(m * 2 + x, m * 2 + y, m * 25, m * 7, alpaca.display.rgb_to_rgb565(255, 150, 0))
+	#cheese
+	alpaca.display.fill_rect(m * 14 + x, m * 7 + y, m * 6, m * 2, alpaca.display.rgb_to_rgb565(255, 255, 0))
+	alpaca.display.fill_rect(m * 2 + x, m * 9 + y, m * 25, m * 12, alpaca.display.rgb_to_rgb565(255, 255, 0))
+	alpaca.display.fill_rect(m * 6 + x, m * 21 + y, m * 17, m * 7, alpaca.display.rgb_to_rgb565(255, 255, 0))
+	alpaca.display.fill_rect(m * 10 + x, m * 28 + y, m * 9, m * 6, alpaca.display.rgb_to_rgb565(255, 255, 0))
+	alpaca.display.fill_rect(m * 12 + x, m * 34 + y, m * 2, m * 4, alpaca.display.rgb_to_rgb565(255, 255, 0))
+	#peperoni
+	alpaca.display.fill_rect(m * 17 + x, m * 9 + y, m * 3, m * 8, alpaca.display.rgb_to_rgb565(255, 0, 0))
+	alpaca.display.fill_rect(m * 15 + x, m * 11 + y, m * 7, m * 4, alpaca.display.rgb_to_rgb565(255, 0, 0))
+	alpaca.display.fill_rect(m * 18 + x, m * 19 + y, m * 3, m * 8, alpaca.display.rgb_to_rgb565(255, 0, 0))
+	alpaca.display.fill_rect(m * 16 + x, m * 21 + y, m * 7, m * 4, alpaca.display.rgb_to_rgb565(255, 0, 0))
+	alpaca.display.fill_rect(m * 4 + x, m * 12 + y, m * 3, m * 8, alpaca.display.rgb_to_rgb565(255, 0, 0))
+	alpaca.display.fill_rect(m * 2 + x, m * 14 + y, m * 7, m * 4, alpaca.display.rgb_to_rgb565(255, 0, 0))
+	alpaca.display.fill_rect(m * 8 + x, m * 21 + y, m * 3, m * 8, alpaca.display.rgb_to_rgb565(255, 0, 0))
+	alpaca.display.fill_rect(m * 6 + x, m * 23 + y, m * 7, m * 4, alpaca.display.rgb_to_rgb565(255, 0, 0))
+	#outline
+	alpaca.display.fill_rect(m * 6 + x, m * 0 + y, m * 16, m * 2, alpaca.display.rgb_to_rgb565(140, 0, 0))
+	alpaca.display.fill_rect(m * 2 + x, m * 2 + y, m * 4, m * 2, alpaca.display.rgb_to_rgb565(140, 0, 0))
+	alpaca.display.fill_rect(m * 22 + x, m * 2 + y, m * 5, m * 2, alpaca.display.rgb_to_rgb565(140, 0, 0))
+	alpaca.display.fill_rect(m * 0 + x, m * 4 + y, m * 2, m * 11, alpaca.display.rgb_to_rgb565(140, 0, 0))
+	alpaca.display.fill_rect(m * 27 + x, m * 4 + y, m * 2, m * 11, alpaca.display.rgb_to_rgb565(140, 0, 0))
+	alpaca.display.fill_rect(m * 2 + x, m * 15 + y, m * 2, m * 6, alpaca.display.rgb_to_rgb565(140, 0, 0))
+	alpaca.display.fill_rect(m * 25 + x, m * 15 + y, m * 2, m * 6, alpaca.display.rgb_to_rgb565(140, 0, 0))
+	alpaca.display.fill_rect(m * 4 + x, m * 21 + y, m * 2, m * 3, alpaca.display.rgb_to_rgb565(140, 0, 0))
+	alpaca.display.fill_rect(m * 23 + x, m * 21 + y, m * 2, m * 3, alpaca.display.rgb_to_rgb565(140, 0, 0))
+	alpaca.display.fill_rect(m * 6 + x, m * 24 + y, m * 2, m * 4, alpaca.display.rgb_to_rgb565(140, 0, 0))
+	alpaca.display.fill_rect(m * 21 + x, m * 24 + y, m * 2, m * 4, alpaca.display.rgb_to_rgb565(140, 0, 0))
+	alpaca.display.fill_rect(m * 8 + x, m * 28 + y, m * 2, m * 6, alpaca.display.rgb_to_rgb565(140, 0, 0))
+	alpaca.display.fill_rect(m * 19 + x, m * 28 + y, m * 2, m * 4, alpaca.display.rgb_to_rgb565(140, 0, 0))
+	alpaca.display.fill_rect(m * 14 + x, m * 32 + y, m * 5, m * 2, alpaca.display.rgb_to_rgb565(140, 0, 0))
+	alpaca.display.fill_rect(m * 10 + x, m * 34 + y, m * 2, m * 4, alpaca.display.rgb_to_rgb565(140, 0, 0))
+	alpaca.display.fill_rect(m * 14 + x, m * 34 + y, m * 2, m * 4, alpaca.display.rgb_to_rgb565(140, 0, 0))
+	alpaca.display.fill_rect(m * 12 + x, m * 38 + y, m * 2, m * 2, alpaca.display.rgb_to_rgb565(140, 0, 0))
 
 
 def draw_mate(matex,matey):
@@ -144,7 +181,7 @@ while True:
                 y = y+1
                 
         if alpaca.a.pressed:
-    		alpaca.display.fill_rect(35, 65, 60, 70, 0x0f0)
+    		draw_pizza()
         
         alpaca.display.fill_rect(0, 8, 128, 128 - 8, 0x000)
 
