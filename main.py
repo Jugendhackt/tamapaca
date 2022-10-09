@@ -110,6 +110,9 @@ while True:
                 
         if alpaca.dpad.down:
                 y = y+1
+                
+        if alpaca.a.pressed:
+    		alpaca.display.fill_rect(35, 65, 60, 70, 0x0f0)
         
         alpaca.display.fill_rect(0, 8, 128, 128 - 8, 0x000)
 
