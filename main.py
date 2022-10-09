@@ -102,6 +102,8 @@ alpacay = 0
 matex = 0
 matey = 0
 
+counter_mate = 0
+counter_computer = 0
 
 def draw_alpaca(alpacax, alpacay, colors):
     alpaca.display.fill_rect(alpacax + 20, alpacay + 25, 10, 5, colors)
@@ -281,7 +283,7 @@ while True:
         if zufall == 50 and bd < 20:
             bd = bd + 1
 
-        if zufall == 90 and bs > 0:
+        if (zufall == 90 or zufall == 80) and bs > 0:
             bs = bs - 1
 
         if alpaca.dpad.right:
@@ -297,11 +299,25 @@ while True:
             y = y + 1
 
         if alpaca.a.pressed:
+            counter_mate = 1
+            bd = bd - 2
+            bh = bh - 2
+            bs = bs - 2
+            
+        if counter_mate > 0 and counter_mate < 40:
             draw_pizza(50, 90)
             draw_mate(0, 90)
-
+            counter_mate = counter_mate + 1
+            
         if alpaca.b.pressed:
+            counter_computer = 1
+            bs = bs + 2
+            bd = bh + 4
+            bd = bd + 4
+            
+        if counter_computer > 0 and counter_computer < 40:
             draw_computer(90, 90)
+            counter_computer = counter_computer + 1
 
         alpaca.display.show()
         print("updated")
