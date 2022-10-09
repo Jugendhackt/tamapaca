@@ -162,11 +162,32 @@ def draw_pizza(x=0, y=0, m=1):
     alpaca.display.fill_rect(m * 12 + x, m * 38 + y, m * 2, m * 2, alpaca.display.rgb_to_rgb565(140, 0, 0))
 
 
-def draw_mate(matex, matey):
-    alpaca.display.fill_rect(matex + 10, matey + 15, 30, 40, alpaca.display.rgb_to_rgb565(186, 130, 29))
-    alpaca.display.fill_rect(matex + 17, matey + 5, 16, 10, alpaca.display.rgb_to_rgb565(209, 146, 33))
-    alpaca.display.fill_rect(matex + 17, matey + 0, 16, 5, alpaca.display.rgb_to_rgb565(62, 25, 255))
-    alpaca.display.fill_rect(matex + 10, matey + 25, 30, 30, alpaca.display.rgb_to_rgb565(255, 208, 19))
+def draw_mate(x, y):
+    #drink
+    alpaca.display.fill_rect(x + 1, y + 13, 8, 17, alpaca.display.rgb_to_rgb565(255, 255, 0))
+    alpaca.display.fill_rect(x + 3, y + 8, 4, 5, alpaca.display.rgb_to_rgb565(255, 255, 0))
+    #foam
+    alpaca.display.fill_rect(x + 3, y + 7, 4, 2, alpaca.display.rgb_to_rgb565(255, 255, 255))
+    #outline
+    alpaca.display.fill_rect(x + 1, y + 30, 8, 1, alpaca.display.rgb_to_rgb565(140, 0, 0))
+    alpaca.display.fill_rect(x + 0, y + 14, 1, 16, alpaca.display.rgb_to_rgb565(140, 0, 0))
+    alpaca.display.fill_rect(x + 9, y + 14, 1, 16, alpaca.display.rgb_to_rgb565(140, 0, 0))
+    alpaca.display.fill_rect(x + 1, y + 13, 1, 1, alpaca.display.rgb_to_rgb565(140, 0, 0))
+    alpaca.display.fill_rect(x + 8, y + 13, 1, 1, alpaca.display.rgb_to_rgb565(140, 0, 0))
+    alpaca.display.fill_rect(x + 2, y + 7, 1, 6, alpaca.display.rgb_to_rgb565(140, 0, 0))
+    alpaca.display.fill_rect(x + 7, y + 7, 1, 6, alpaca.display.rgb_to_rgb565(140, 0, 0))
+    alpaca.display.fill_rect(x + 3, y + 3, 1, 4, alpaca.display.rgb_to_rgb565(140, 0, 0))
+    alpaca.display.fill_rect(x + 6, y + 3, 1, 4, alpaca.display.rgb_to_rgb565(140, 0, 0))
+    alpaca.display.fill_rect(x + 3, y + 0, 4, 3, alpaca.display.rgb_to_rgb565(140, 0, 0))
+    alpaca.display.fill_rect(x + 2, y + 1, 6, 1, alpaca.display.rgb_to_rgb565(140, 0, 0))
+    #lid
+    alpaca.display.fill_rect(x + 3, y + 1, 4, 1, alpaca.display.rgb_to_rgb565(0, 0, 255))
+    #label-outer
+    alpaca.display.fill_rect(x + 6, y + 16, 3, 12, alpaca.display.rgb_to_rgb565(255, 150, 0))
+    alpaca.display.fill_rect(x + 6, y + 16, 1, 1, alpaca.display.rgb_to_rgb565(255, 255, 0))
+    alpaca.display.fill_rect(x + 6, y + 27, 1, 1, alpaca.display.rgb_to_rgb565(255, 255, 0))
+    #label-inner
+    alpaca.display.fill_rect(x + 7, y + 17, 2, 10, alpaca.display.rgb_to_rgb565(255, 255, 255))
 
 
 def draw_computer(x=0, y=0, m=1):
@@ -306,7 +327,7 @@ while True:
             
         if counter_mate > 0 and counter_mate < 40:
             draw_pizza(50, 90)
-            draw_mate(0, 90)
+            draw_mate(20, 90)
             counter_mate = counter_mate + 1
             
         if alpaca.b.pressed:
